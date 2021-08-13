@@ -9,11 +9,13 @@ from django.http.response import Http404
 # Create your views here.
 
 # Show a list of songs with an option to create a new song to be added to the list.
+
+
 class SongList(APIView):
 
     def get(self, request):
-        songs = Song.objects.all()
-        serializer = SongSerializer(songs, many=True)
+        song = Song.objects.all()
+        serializer = SongSerializer(song, many=True)
         return Response(serializer.data)
 
     def post(self, request):
